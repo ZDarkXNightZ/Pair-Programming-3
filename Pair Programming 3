@@ -1,0 +1,148 @@
+#include <iostream>
+#include <stdlib.h>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+class question1 {
+public:
+    void myMethod() {
+        // Display a company logo
+        cout << "        _    __  __       _     _ _      " << endl;
+        cout << "       | |  |  \\/  |     | |   (_) |     " << endl;
+        cout << "       | |  | \\  / | ___ | |__  _| | ___ " << endl;
+        cout << "   _   | |  | |\\/| |/ _ \\| '_ \\| | |/ _ \\" << endl;
+        cout << "  | |__| |  | |  | | (_) | |_) | | |  __/" << endl;
+        cout << "   \\____/(_)|_|  |_|\\___/|_.__/|_|_|\\___|" << endl;
+
+        string plan;
+        int minutes, extraMinutes;
+        double cost;
+
+        // Prompt the user for the plan type (premium or standard)
+        cout << "\n" << "What plan type have you chosen (premium or standard) ?:" << endl;
+        cin >> plan;
+
+        // Prompt the user for the number of minutes used
+        cout << "How many minutes have you used this month ?:" << endl;
+        cin >> minutes;
+       
+        cout<<fixed<<setprecision(2)<<endl;
+
+        if (plan == "standard" || plan == "Standard") {
+            if (minutes > 60) {
+                extraMinutes = minutes % 60;
+            }
+            else {
+                extraMinutes = 0;
+            }
+
+            cost = 10 + (extraMinutes * 0.40);
+            // Display the cost of the plan for the month
+            cout << "The cost of your plan is $" << cost << " for the month" << endl;
+        }
+        else if (plan == "premium" || plan == "Premium") {
+            if (minutes > 75) {
+                extraMinutes = minutes % 75;
+            }
+            else {
+                extraMinutes = 0;
+            }
+
+            cost = 25 + (extraMinutes * 0.10);
+            // Display the cost of your plan for the month
+            cout << "The cost of your plan is $" << cost << " for the month" << endl;
+        }
+        else {
+            // Display an error message for an invalid plan option
+            cout << "You have entered an invalid plan option ..." << endl;
+        }
+    }
+};
+
+class question2 {
+public:
+    void myMethod() {
+        double cash, t1, t2, t3, tt1, tt2, tt3;
+        int rating;
+
+        // Display a restaurant logo
+        cout << "  _______        _       ____  _     _             " << endl;
+        cout << " |__   __|      | |     |  _ \\(_)   | |            " << endl;
+        cout << "    | | ___  ___| |__   | |_) |_ ___| |_ _ __ ___  " << endl;
+        cout << "    | |/ _ \\/ __| '_ \\  |  _ <| / __| __| '__/ _ \\ " << endl;
+        cout << "    | |  __/ (__| | | | | |_) | \\__ \\ |_| | | (_) |" << endl;
+        cout << "    |_|\\___|\\___|_| |_| |____/|_|___/\\__|_|  \\___/ " << endl;
+
+        // Prompt the user for the bill amount
+        cout << "\n" << "How much was your bill?" << endl;
+        cin >> cash;
+
+        cout << "\n";
+
+        // Prompt the user to rate their experience (1, 2, or 3)
+        cout << "What was your level of satisfaction?\n";
+        cout << "1: Totally satisfied\n";
+        cout << "2: Satisfied\n";
+        cout << "3: Dissatisfied\n";
+        cin >> rating;
+
+        t1 = cash * 0.10;
+        t2 = cash * 0.15;
+        t3 = cash * 0.20;
+
+        tt1 = cash * 1.23;
+        tt2 = cash * 1.28;
+        tt3 = cash * 1.33;
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << fixed << setprecision(2);
+
+        if (rating < 4 && rating > 0) {
+            if (rating == 3) {
+                // Display message for an unsatisfactory rating
+                cout << "Because you were Dissatisfied your tip should be Dissatisfied $"<<t1<<" (10% Tip)\n";
+                cout << "____________________________________________\n";
+                cout << "Total Bill (including 13% HST) = $" << tt1 << endl;
+            }
+            else if (rating == 2) {
+                // Display message for a satisfactory rating
+                cout << "Because you were Satisfied your tip should be Satisfied $"<<t2<<" (15% Tip)\n";
+                cout << "____________________________________________\n";
+                cout << "Total Bill (including 13% HST) = $" << tt2 << endl;
+            }
+            else if (rating == 1) {
+                // Display message for an extremely satisfactory rating
+                cout << "Because you were Totalyy satisfied your tip should be Totally satisfied $"<<t3<<" (20% Tip)\n";
+                cout << "____________________________________________\n";
+                cout << "Total Bill (including 13% HST) = $" << tt3 << endl;
+            }
+        }
+        else {
+            // Display an error message for an invalid rating
+            cout << "You haven't entered a valid rating, please try again";
+        }
+    }
+};
+
+int main() {
+    int question;
+
+    // Prompt the user to choose a question (1 or 2)
+    cout << "\n" << "Which question would you like to choose ?" << endl;
+    cin >> question;
+
+    if (question == 1) {
+        question1 myObj;
+        myObj.myMethod();
+    }
+    else if (question == 2) {
+        question2 myObj;
+        myObj.myMethod();
+    }
+
+    return 0;
+}
